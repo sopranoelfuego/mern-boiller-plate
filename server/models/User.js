@@ -5,31 +5,31 @@ const jwt =require("jsonwebtoken")
 const UserSchema=mongoose.Schema(
     {
         username:{
-            type:string,
+            type:String,
             maxlength:200
         },
         email :{
-            type:email,
+            type:String,
             unique:1,
             trim: true
         },
         password :{
-            type:string,
+            type:String,
             maxlength:5
         },
         role :{
-            type:number,
+            type:Number,
             default:0
         },
         token:{
-            type:string
+            type:String
         }
         
     }
 )
 
 
-userSchema.pre('save', function( next ) {
+UserSchema.pre('save', function( next ) {
     var user = this;
     
     if(user.isModified('password')){    
@@ -48,14 +48,14 @@ userSchema.pre('save', function( next ) {
     }
 });
 
-userSchema.methods.comparePassword = function(plainPassword,cb){
+UserSchema.methods.comparePassword = function(plainPassword,cb){
     bcrypt.compare(plainPassword, this.password, function(err, isMatch){
         if (err) return cb(err);
         cb(null, isMatch)
     })
 }
 
-userSchema.methods.generateToken = function(cb) {
+UserSchema.methods.generateToken = function(cb) {
     var user = this;
     console.log('user',user)
     console.log('userSchema', userSchema)
@@ -70,7 +70,7 @@ userSchema.methods.generateToken = function(cb) {
     })
 }
 
-userSchema.statics.findByToken = function (token, cb) {
+UserSchema.statics.findByToken = function (token, cb) {
     var user = this;
 
     jwt.verify(token,'secret',function(err, decode){
