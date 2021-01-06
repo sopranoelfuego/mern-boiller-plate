@@ -1,4 +1,4 @@
-import {LOGOUT_USER,LOGOUT_USER, AUTH, ADD_USER} from "../types"
+import {LOGOUT_USER,LOGOUT_USER, AUTH, ADD_USER,DELETE_USER,GET_USER,DELETE_ALL_USERS } from "../types"
 
 import axios from 'axios'
 import {userServer} from "../../config"
@@ -37,6 +37,12 @@ const auth=()=>{
         payload:preparedRequest
     }
 }
+const allUsers =()=>{
+    let preparedRequest=axios.post(`${userServer}/allUsers`).then(res =>res.data)
+    return {
+        type:ALL_USERS,
+        payload:preparedRequest
+    }
+}
 
-
-exports {addUser,loginUser,auth,logoutUser}
+export {addUser,loginUser,auth,logoutUser}

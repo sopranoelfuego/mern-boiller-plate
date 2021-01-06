@@ -68,4 +68,13 @@ router.get("/logout", auth, (req, res) => {
     });
 });
 
+router.get("/allUser",auth,(req,res)=>{
+    
+    User.find({},(err,data)=>{
+        if(err) throw err
+        if(data){
+           res.json({users:data})
+        }
+    })
+})
 module.exports = router;
