@@ -1,5 +1,5 @@
 import {combineReducers} from "redux"
-import {userReducer} from "./userReducer"
+const userReducer =require("./userReducer")
 
 
-export const combineReduces=combineReducers(userReducer)
+export const user=combineReducers(userReducer)

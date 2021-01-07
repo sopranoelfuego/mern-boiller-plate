@@ -1,12 +1,12 @@
-import {LOGOUT_USER,LOGOUT_USER, AUTH, ADD_USER,DELETE_USER,GET_USER,DELETE_ALL_USERS} from "../types"
+import {LOGOUT_USER,LOGIN_USER, AUTH, ADD_USER,DELETE_USER,GET_USER,DELETE_ALL_USERS} from "../types/types"
 
-export const userReducer =(state={},action)=>{
+export default function (state={},action){
 
     switch(action.type){
         case ADD_USER :
              return {...state,addSuccess:action.payload}
         case LOGOUT_USER :
-            return {...state,logoutSuccess:actions.payload}
+            return {...state,logoutSuccess:action.payload}
         case AUTH :
             return {...state,userData:action.payload}
         case LOGIN_USER :
