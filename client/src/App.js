@@ -1,12 +1,21 @@
-import logo from './logo.svg';
+
 import './App.css';
+import {Switch,Route} from "react-route-dom"
+import Footer from "./components/view/footer/Footer"
+import Loginpage from "./components/view/loginpage"
+import Landingpage from "./components/view/landingpage"
 
 
 function App() {
   return (
-    <div className="App">
-      welcome to the home page homepage...
-    </div>
+      <Fragment>
+        <Suspense fallback={<h1>page is charging</h1>}>
+            <Switch>
+              <Route exact path="/" component={} />
+            </Switch>
+
+       </Suspense>
+      </Fragment>
   );
 }
 
