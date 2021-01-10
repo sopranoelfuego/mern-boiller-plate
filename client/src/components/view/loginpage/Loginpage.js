@@ -1,9 +1,10 @@
 import React from 'react'
 import * as Yup from "yup"
 import {Formik} from "formik"
+import {withRouter} from "react-router-dom"
 import "./loginPage.css"
 
-const LoginPage=()=>{
+const LoginPage=(props)=>{
 
 
     return(
@@ -33,8 +34,8 @@ const LoginPage=()=>{
                 
             }
               onSubmit={
-                  (values,{isSubmitting})=>{
-                    JSON.stringify(values,null,2)
+                  (values,{setSubmitting})=>{
+                    alert(JSON.stringify(values,null,2))
                   }
               }
 
@@ -46,10 +47,27 @@ const LoginPage=()=>{
                    handleChange,
                    handleSubmit,
                })=>(
-                <div className="form">
+                <div className="container">
                     
-                    <div className="container">
-                        
+                    <div className="form-container">
+                        <div className="header-form">
+                            this is header-form
+                        </div>
+                        <div className="form">
+                            <form onSubmit={handleSubmit}>
+                               
+                                <label for="email">Email</label>
+                                <input type="form-control" name="email" onChange={handleChange} onBlur={handleBlur}/><br></br>
+
+                                
+                            <label for="password">password</label>
+                                <input type="password" name="password" onChange={handleChange} onBlur={handleBlur}/><br></br>
+
+                           
+                            <pre>{JSON.stringify(values,null,2)}</pre>
+                            </form>
+
+                        </div>
 
                     </div>
                 </div>
@@ -60,4 +78,4 @@ const LoginPage=()=>{
         </div>
     )
 }
-export default LoginPage
+export default withRouter(LoginPage)

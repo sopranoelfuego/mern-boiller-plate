@@ -9,19 +9,20 @@ export default function (WithHoComponent,option,adminRoute=null) {
          let dispatch=useDispatch()
         useEffect(()=>{
             dispatch(auth()).then(response =>{
-                if(!response.payload.isAuth){  
-                    props.history.push("/login")
+                console.log("this is auth action:",response)
+                // if(!response.payload.isAuth){  
+                //     props.history.push("/login")
 
-                }else {
-                    if(adminRoute && !response.payload.isAdmin){
-                        props.history.push("/")
-                    }else {
-                        if(option == false){
-                            props.history.push("/")
-                        }
-                    }
-                }
-            })
+                // }else {
+                //     if(adminRoute && !response.payload.isAdmin){
+                //         props.history.push("/")
+                //     }else {
+                //         if(option == false){
+                //             props.history.push("/")
+                //         }
+                //     }
+                // }
+            }).catch(err => console.log("error aquire while action auth is poped",err))
         },[])
        return <WithHoComponent {...props} user={user}/>
  

@@ -32,6 +32,7 @@ return {
 }
 const auth=()=>{
     let preparedRequest=axios.post(`${userServer}/auth`).then(res => res.data)
+    .catch(err => console.log(err))
     return {
         type:AUTH,
         payload:preparedRequest

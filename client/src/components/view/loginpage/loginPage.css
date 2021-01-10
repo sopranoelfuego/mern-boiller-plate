@@ -1,4 +1,4 @@
-.form {
+.container {
     padding: 0;
     margin: 0;
 
@@ -6,4 +6,20 @@
 
 body {
     background-color: lightblue;
+    box-sizing: border-box;
+}
+.form-container {
+
+    position:absolute,
+    
+    
+}
+.form {
+    background-color:whitesmoke;
+    transform:translate(50%,50%);
+    width: 30%;
+    padding:30px;
+    border:1px grey ;
+    border-radius: 1%;
+    
 }
